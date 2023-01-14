@@ -1,0 +1,38 @@
+#register {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .centered {
+        padding: 22px;
+        outline: 1px solid rgba(200, 200, 200, 0.5);
+        box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        margin-top: 64px;
+        width: 60%;
+        max-width: 360px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .input {
+            margin: 8px 0;
+            width: 100%;
+        }
+
+        .btn {
+            margin: 8px 0;
+            width: 100%;
+        }
+
+        .downTxt {
+            margin-top: 12px;
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: flex-start;
+            font-size: 14px;
+        }
+    }
+}

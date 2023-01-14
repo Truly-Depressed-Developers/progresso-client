@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import { Home } from './pages/Home/Home';
 import { NotFound } from './pages/NotFound/NotFound';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
 
 function Inside() {
     return (
@@ -13,11 +15,15 @@ function Inside() {
             <nav>
                 <Link to="/">Home</Link>
                 <Link to="/random">Random</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
             </nav>
 
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='*' element={<NotFound />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
             </Routes>
 
         </div>
