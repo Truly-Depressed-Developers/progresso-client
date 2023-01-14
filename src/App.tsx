@@ -10,6 +10,8 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Upload } from './pages/Upload';
 import { User } from './pages/User';
+import { Browser } from './pages/Browser';
+import { File } from './pages/File';
 
 function Inside() {
     return (
@@ -21,6 +23,7 @@ function Inside() {
                 <Link to="/login">Login</Link>
                 <Link to="/register">Register</Link>
                 <Link to="/user/1">User</Link>
+                <Link to="/browser">Browse PDFs</Link>
             </nav>
 
             <Routes>
@@ -30,6 +33,8 @@ function Inside() {
                 <Route path='*' element={<NotFound />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/browser' element={<Browser />} />
+                <Route path='/file/:id' element={<File />} />
             </Routes>
 
         </div>
