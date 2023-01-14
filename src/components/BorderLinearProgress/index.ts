@@ -1,0 +1,1 @@
+export { BorderLinearProgress } from "./BorderLinearProgress";

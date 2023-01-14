@@ -1,0 +1,10 @@
+#user-skills {
+    .user-skills-header {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .skill-meter:not(:last-child) {
+        margin-bottom: 12px;
+    }
+}
