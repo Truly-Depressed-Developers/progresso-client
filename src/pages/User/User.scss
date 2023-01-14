@@ -1,0 +1,24 @@
+#profile {
+    display: flex;
+    justify-content: center;
+
+    #profile-container {
+        max-width: 666px;
+
+        display: flex;
+
+        &>* {
+            padding: 8px;
+            width: 50%;
+
+            &>* {
+                width: 100%;
+                padding: 16px;
+
+                &:not(:last-child) {
+                    margin-bottom: 16px;
+                }
+            }
+        }
+    }
+}

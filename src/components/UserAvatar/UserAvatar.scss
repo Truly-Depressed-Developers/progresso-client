@@ -1,0 +1,11 @@
+#user-profile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    .avatar {
+        margin: 0 auto;
+        margin-bottom: 32px;
+    }
+}
