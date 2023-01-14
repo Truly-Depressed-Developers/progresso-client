@@ -6,7 +6,15 @@ import { Settings } from "../../settings";
 
 import "./Login.scss";
 
-type Props = {};
+type Props = {
+    onLogin: (id: string, username: string) => void
+};
+
+type ServerRes = {
+    description: string,
+    id: string,
+    username: string
+}
 
 const Login = (props: Props): JSX.Element => {
     const navigate = useNavigate();
@@ -34,7 +42,7 @@ const Login = (props: Props): JSX.Element => {
     })
 
     const handleKeyPress = (e: KeyboardEvent) => {
-        if (e.key == "Enter") {
+        if (e.key === "Enter") {
             onSubmit();
         }
     }
@@ -68,8 +76,10 @@ const Login = (props: Props): JSX.Element => {
                         return { data: await response.json(), succ: false };
                     }
                 })
-                .then((data) => {
+                .then((data: { data: ServerRes, succ: Boolean }) => {
                     if (data.succ) {
+                        // props.onLogin(data.data.id, "Spookyless");
+                        props.onLogin(data.data.id, data.data.username);
                         navigate("/");
                     } else {
                         setLoginError(true);
@@ -86,6 +96,9 @@ const Login = (props: Props): JSX.Element => {
 
     return (
         <div id="login">
+            <div className='backTxt'>
+                LOGIN
+            </div>
             <Paper elevation={3} className="centered">
                 <TextField
                     error={loginInputError}

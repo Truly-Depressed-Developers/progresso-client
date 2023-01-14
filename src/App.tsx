@@ -12,29 +12,56 @@ import { Upload } from './pages/Upload';
 import { User } from './pages/User';
 import { Browser } from './pages/Browser';
 import { File } from './pages/File';
+import { useState } from 'react';
 
 function Inside() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [userID, setUserID] = useState("");
+    const [username, setUsername] = useState("");
+
+    const onLogin = (id: string, username: string) => {
+        setLoggedIn(true);
+        setUserID(id);
+        setUsername(username);
+    }
+
+    const logOut = () => {
+        setLoggedIn(false);
+        setUserID("");
+        setUsername("");
+    }
+
     return (
         <div className="App">
             <nav>
-                <Link to="/">Home</Link>
-                <Link to="/upload">Upload</Link>
-                <Link to="/random">Random</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
-                <Link to="/user/1">User</Link>
-                <Link to="/browser">Browse PDFs</Link>
+                <div id="left">
+                    <Link to="/">Home</Link>
+                    <Link to="/upload">Upload</Link>
+                    <Link to="/random">Random</Link>
+                    <Link to="/browser">Browse PDFs</Link>
+                </div>
+                {!loggedIn ?
+                    <div id="right">
+                        <Link to="/login">Login</Link>
+                        <Link className='colored' to="/register">Register</Link>
+                    </div>
+                    :
+                    <div id="right">
+                        <Link to="/user/1">{username}</Link>
+                        <Link className='colored' onClick={logOut} to="/">Logout</Link>
+                    </div>
+                }
             </nav>
 
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path="/upload" element={<Upload />} />
                 <Route path="/user/:id" element={<User />} />
-                <Route path='*' element={<NotFound />} />
-                <Route path='/login' element={<Login />} />
+                <Route path='/login' element={<Login onLogin={onLogin} />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/browser' element={<Browser />} />
                 <Route path='/file/:id' element={<File />} />
+                <Route path='*' element={<NotFound />} />
             </Routes>
 
         </div>
