@@ -8,7 +8,7 @@ const Home = (props: Props): JSX.Element => {
             <Typography
                 variant="h1"
             >
-                Sheep Your Hack 4
+                &lt;BITEhack 2023&gt;
             </Typography>
 
             <Typography

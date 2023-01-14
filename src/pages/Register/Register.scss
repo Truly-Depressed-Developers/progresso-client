@@ -3,11 +3,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     .centered {
         padding: 22px;
         outline: 1px solid rgba(200, 200, 200, 0.5);
-        box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.15);
+        // box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.15);
         border-radius: 8px;
         margin-top: 64px;
         width: 60%;
@@ -34,5 +35,9 @@
             justify-content: flex-start;
             font-size: 14px;
         }
+    }
+
+    .errorBox {
+        margin-top: 8px;
     }
 }
