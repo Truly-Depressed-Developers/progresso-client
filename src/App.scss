@@ -1,3 +1,58 @@
-nav>*:not(:last-child) {
-    margin-right: 8px;
+nav>#right>*:is(:last-child) {
+    margin-right: 16px;
+}
+
+nav {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    #left,
+    #right {
+
+        display: flex;
+    }
+
+    #left {
+        width: 50%;
+        height: 100%;
+    }
+
+    #right {
+        width: 30%;
+        justify-content: flex-end;
+
+        a {
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin: 0 4px;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        color: rgba(20, 20, 100, 1);
+        font-size: 18px;
+        cursor: pointer;
+        height: 100%;
+
+
+        &:hover {
+            background-color: rgba(50, 50, 50, 0.1);
+        }
+
+        &.colored {
+            background-color: rgba(20, 20, 100, 1);
+            color: white;
+
+            &:hover {
+                background-color: rgba(20, 20, 100, 0.8);
+            }
+        }
+    }
 }

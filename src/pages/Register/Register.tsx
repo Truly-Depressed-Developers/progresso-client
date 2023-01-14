@@ -34,7 +34,7 @@ const Register = (props: Props) => {
     })
 
     const handleKeyPress = (e: KeyboardEvent) => {
-        if (e.key == "Enter") {
+        if (e.key === "Enter") {
             onSubmit();
         }
     }
@@ -71,7 +71,7 @@ const Register = (props: Props) => {
                 })
                 .then((data) => {
                     if (data.succ) {
-                        navigate("/");
+                        navigate("/login");
                     } else {
                         setRegisterError(true);
                         setLogin("");
@@ -87,6 +87,9 @@ const Register = (props: Props) => {
 
     return (
         <div id="register">
+            <div className='backTxt'>
+                REGISTER
+            </div>
             <Paper elevation={3} className="centered">
                 <TextField
                     error={loginInputError}

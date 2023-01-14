@@ -4,13 +4,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+
+    .backTxt {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 20vw;
+        line-height: 92%;
+        padding: 0;
+        color: rgba(40, 40, 40, 0.05);
+        z-index: -1;
+        top: 0;
+    }
 
     .centered {
         padding: 22px;
         outline: 1px solid rgba(200, 200, 200, 0.5);
-        // box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.15);
         border-radius: 8px;
-        margin-top: 64px;
+        margin-top: 96px;
         width: 60%;
         max-width: 360px;
         display: flex;
