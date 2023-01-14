@@ -10,6 +10,8 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Upload } from './pages/Upload';
 import { User } from './pages/User';
+import { Browser } from './pages/Browser';
+import { File } from './pages/File';
 import { useState } from 'react';
 
 function Inside() {
@@ -36,6 +38,7 @@ function Inside() {
                     <Link to="/">Home</Link>
                     <Link to="/upload">Upload</Link>
                     <Link to="/random">Random</Link>
+                    <Link to="/browser">Browse PDFs</Link>
                 </div>
                 {!loggedIn ?
                     <div id="right">
@@ -56,6 +59,8 @@ function Inside() {
                 <Route path="/user/:id" element={<User />} />
                 <Route path='/login' element={<Login onLogin={onLogin} />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/browser' element={<Browser />} />
+                <Route path='/file/:id' element={<File />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
 

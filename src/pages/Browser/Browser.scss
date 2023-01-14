@@ -1,0 +1,12 @@
+#browser {
+    display: flex;
+    justify-content: center;
+
+    #browser-container {
+        max-width: 666px;
+        gap: 16px;
+
+        display: flex;
+        flex-direction: column;
+    }
+}
