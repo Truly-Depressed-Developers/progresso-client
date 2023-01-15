@@ -38,9 +38,9 @@ function Inside() {
     }
 
     return (
-        <div className="App">
+        <div id="App">
             <MyGlobalContext.Provider value={{ loggedIn, setLoggedIn, userID, setUserID, username, setUsername }}>
-                <nav>
+                <nav className='main'>
                     <div id="left">
                         <Link to="/">Home</Link>
                         <Link to="/upload">Upload</Link>
