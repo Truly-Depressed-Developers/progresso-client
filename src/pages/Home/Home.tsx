@@ -1,21 +1,25 @@
 import { Typography } from "@mui/material";
+import "./Home.scss";
 
 type Props = {}
 
 const Home = (props: Props): JSX.Element => {
     return (
-        <div>
-            <Typography
-                variant="h1"
-            >
-                &lt;BITEhack 2023&gt;
-            </Typography>
+        <div id="home">
+            <div>
 
-            <Typography
-                variant="subtitle1"
-            >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, voluptate?
-            </Typography>
+                <Typography
+                    variant="h1"
+                >
+                    &lt;BITEhack&gt;
+                </Typography>
+
+                <Typography
+                    variant="h5"
+                >
+                    Edycja V, 2023
+                </Typography>
+            </div>
         </div>
     );
 }

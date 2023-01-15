@@ -26,7 +26,7 @@ const UserAvatar = (props: Props): JSX.Element => {
             />
 
             <Typography variant="h4" >{props.username}</Typography>
-            <Typography variant="h5">{props.title}</Typography>
+            <Typography variant="h6">{props.title}</Typography>
         </Paper>
     );
 }

@@ -44,7 +44,8 @@ function Inside() {
                     <div id="left">
                         <Link to="/">Home</Link>
                         <Link to="/upload">Upload</Link>
-                        <Link to="/quizes">Quizes</Link>
+                        <Link to="/quiz/add">Add quiz</Link>
+                        <Link to="/quiz/list">Quiz list</Link>
                         <Link to="/browser">Browse PDFs</Link>
                     </div>
                     {!loggedIn ?
@@ -59,7 +60,7 @@ function Inside() {
                         </div>
                     }
                 </nav>
-                
+
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path="/upload" element={<Upload />} />
@@ -67,7 +68,9 @@ function Inside() {
                     <Route path='/login' element={<Login onLogin={onLogin} />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/browser' element={<Browser />} />
-                    <Route path='/quizes' element={<Quizes />} />
+                    <Route path='/quiz/list' element={<Quizes />} />
+                    <Route path='/quiz/add' element={<QuizAdd />} />
+                    <Route path='/quiz/:id/add' element={<QuestionAdd />} />
                     <Route path='/quiz/:id/take' element={<TakeQuiz />} />
                     <Route path='/file/:id' element={<File />} />
                     <Route path='*' element={<NotFound />} />

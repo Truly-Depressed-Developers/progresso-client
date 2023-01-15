@@ -3,11 +3,10 @@
     justify-content: center;
 
     #profile-container {
-        max-width: 666px;
+        max-width: 768px;
 
         #top-panels {
             width: 100%;
-
             display: flex;
 
             &>* {
@@ -26,6 +25,7 @@
         }
 
         #points-history {
+            margin-top: 16px;
             padding: 8px;
         }
     }
