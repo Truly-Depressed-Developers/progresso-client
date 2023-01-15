@@ -14,6 +14,8 @@ const QuizAdd = (props: Props): JSX.Element => {
     const [questionCount, setQuestionCount] = useState(10);
     const [reward, setReward] = useState(5);
 
+    const [message, setMessage] = useState("");
+
     const validSkill = useMemo(() => category > 0 && category <= categories.length, [category, categories]);
     const validName = useMemo(() => name.length >= 3, [name]);
     const validQuestionCount = useMemo(() => questionCount >= 3, [questionCount]);
@@ -22,23 +24,28 @@ const QuizAdd = (props: Props): JSX.Element => {
     const validForm = useMemo(() => validSkill && validName && validQuestionCount && validReward, [validSkill, validName, validQuestionCount, validReward]);
 
     const onSubmit = useCallback(() => {
-        if (validForm === false) {
-            return;
-        }
+        (async () => {
+            if (validForm === false) {
+                return;
+            }
 
-        const data = new URLSearchParams();
-        data.append("skill_id", category.toString());
-        data.append("name", name);
-        data.append("questionCount", questionCount.toString());
-        data.append("reward", reward.toString());
+            const data = new URLSearchParams();
+            data.append("skill_id", category.toString());
+            data.append("name", name);
+            data.append("questionCount", questionCount.toString());
+            data.append("reward", reward.toString());
 
-        fetch(Settings.serverUrl + "addQuiz", { method: "POST", body: data });
+            const response = await fetch(Settings.serverUrl + "addQuiz", { method: "POST", body: data });
+            const d = await response.json();
 
-        setCategory(1);
-        setName("");
-        setQuestionCount(0);
-        setReward(0);
-    }, [validForm]);
+            setMessage(d.description);
+
+            setCategory(1);
+            setName("");
+            setQuestionCount(0);
+            setReward(0);
+        })()
+    }, [validForm, category, name, questionCount, reward]);
 
     useEffect(() => {
         (async () => {
@@ -56,7 +63,15 @@ const QuizAdd = (props: Props): JSX.Element => {
     }, []);
 
     if (categories.length === 0) {
-        return <Paper elevation={2} id="quiz-add" />
+        return <Paper elevation={2} id="quiz-add">
+            Something went wrong
+        </Paper>
+    }
+
+    if (message.length !== 0) {
+        return <Paper elevation={2} id="quiz-add">
+            {message}
+        </Paper>
     }
 
     return (
