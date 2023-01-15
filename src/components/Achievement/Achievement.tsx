@@ -1,13 +1,21 @@
-import { styled } from '@mui/material/styles';
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import { Avatar } from '@mui/material';
+import './Achievement.scss';
+import { Tooltip } from '@mui/material';
 
 type Props = {
-    iconUrl: string
+    iconUrl: string,
+    description: string,
 }
 
 export const Achievement = (props: Props): JSX.Element => {
-    return <div className="achievement">
-        <img src={props.iconUrl} />
-    </div>
+    return (
+        <Tooltip
+            title={
+                <span className='achievement-tooltip'>{props.description}</span>
+            }
+        >
+            <div className="achievement">
+                <img src={props.iconUrl} />
+            </div>
+        </Tooltip>
+    )
 }
