@@ -5,12 +5,8 @@
     flex-direction: column;
     align-items: center;
 
-    .quizesTitle {
-        font-size: 64px;
-        margin: 16px 0;
-    }
-
     .quizList {
+        margin-top: 16px;
         width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));

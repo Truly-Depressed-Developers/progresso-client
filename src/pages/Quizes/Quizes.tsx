@@ -24,7 +24,6 @@ const Quizes = (props: Props): JSX.Element => {
 
     return (
         <div id="quizes">
-            <div className='quizesTitle'>QUIZ LIST</div>
             <div className="quizList">
                 {quizList.map(e => <QuizTile id={e.id} name={e.name} key={e.id} />)}
             </div>
