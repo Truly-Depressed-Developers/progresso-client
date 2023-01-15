@@ -27,7 +27,8 @@ const BrowserFile = (props: Props): JSX.Element => {
             .then((data) => {
                 if (data.succ) {
                     var file = window.URL.createObjectURL(data.blob!);
-                    window.location.assign(file);
+                    window.open(file, '_blank');
+                    // window.location.assign(file);
                 } else {
                     console.log("No succ :(")
                 }
