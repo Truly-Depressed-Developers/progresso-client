@@ -1,9 +1,7 @@
 import "./User.scss";
-import { FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
-import { useDropzone } from "react-dropzone";
+import { Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Settings } from "../../settings";
-import Paper from "@mui/material/Paper";
 import { useParams } from "react-router-dom";
 import { UserAvatar } from "../../components/UserAvatar";
 import { UserBio } from "../../components/UserBio";

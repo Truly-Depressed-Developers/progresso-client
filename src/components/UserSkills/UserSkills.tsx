@@ -1,11 +1,6 @@
 import "./UserSkills.scss";
-import { Avatar, Box, FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
-import { useCallback, useState } from "react";
-import { useDropzone } from "react-dropzone";
-import { Settings } from "../../settings";
+import { Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { useParams } from "react-router-dom";
-import { BorderLinearProgress } from "../BorderLinearProgress/BorderLinearProgress";
 import { SkillMeter } from "../SkillMeter";
 import { Skill } from "../../types/Skill";
 
@@ -13,7 +8,7 @@ type Props = { skills: Skill[] }
 
 const UserSkills = (props: Props): JSX.Element => {
     const maxValue = Math.max(...props.skills.map(s => s.points));
-
+    console.log("aaa", props.skills.map(s => s.id))
     return (
         <Paper
             id="user-skills"
