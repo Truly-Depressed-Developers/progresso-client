@@ -6,7 +6,9 @@ import { Settings } from "../../settings";
 import Paper from "@mui/material/Paper";
 import { useParams } from "react-router-dom";
 
-type Props = {}
+type Props = {
+    bio: string
+}
 
 const UserBio = (props: Props): JSX.Element => {
     return (
@@ -15,7 +17,7 @@ const UserBio = (props: Props): JSX.Element => {
             elevation={2}
         >
             <Typography className="about-me" variant="h5" >About me</Typography>
-            <Typography className="about-me-text" variant="body1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, amet. Aliquam saepe sunt perferendis harum neque ipsum doloribus dolore eveniet, aperiam, in incidunt est sed fuga voluptatem nesciunt temporibus ipsam ullam nam velit iure commodi. Fugiat deleniti omnis repudiandae accusamus voluptatibus, cumque ad, veniam mollitia perspiciatis vel quia tenetur sunt.</Typography>
+            <Typography className="about-me-text" variant="body1">{props.bio}</Typography>
         </Paper>
     );
 }

@@ -1,4 +1,5 @@
 export type Skill = {
+    id: number,
     name: string,
-    value: number
+    points: number
 }
