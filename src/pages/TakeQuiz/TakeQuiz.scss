@@ -1,0 +1,33 @@
+#quiz-take {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 28px;
+    outline: 1px solid rgba(200, 200, 200, 0.5);
+    border-radius: 8px;
+    margin-top: 96px;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .input {
+        margin: 8px 0;
+        width: 100%;
+    }
+
+    .button {
+        margin: 8px 0;
+        width: 100%;
+    }
+
+    .spacer {
+        margin-bottom: 32px;
+
+        &.both {
+            margin-top: 24px;
+        }
+    }
+}
