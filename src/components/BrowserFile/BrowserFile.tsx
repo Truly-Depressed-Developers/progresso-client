@@ -12,11 +12,34 @@ type Props = BrowserFileData
 
 
 const BrowserFile = (props: Props): JSX.Element => {
+    function openPDF() {
+        console.log("id:", props.id)
+        fetch(`http://${Settings.ip}:${Settings.port}/file?` + new URLSearchParams({
+            id: props.id,
+        }))
+            .then(async (response) => {
+                if (response.ok) {
+                    return { blob: await response.blob(), succ: true };
+                } else {
+                    return { blob: await response.blob(), succ: false };
+                }
+            })
+            .then((data) => {
+                if (data.succ) {
+                    var file = window.URL.createObjectURL(data.blob!);
+                    window.location.assign(file);
+                } else {
+                    console.log("No succ :(")
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
     return (
         <ButtonBase
-            onClick={() => {
-                window.open(`file/${props.id}`, '_blank');
-            }}
+            onClick={openPDF}
         >
             <Paper
                 id="browser-file"
