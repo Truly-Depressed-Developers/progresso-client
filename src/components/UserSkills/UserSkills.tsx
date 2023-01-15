@@ -9,18 +9,10 @@ import { BorderLinearProgress } from "../BorderLinearProgress/BorderLinearProgre
 import { SkillMeter } from "../SkillMeter";
 import { Skill } from "../../types/Skill";
 
-type Props = {}
-
-const skills: Skill[] = [
-    { name: "Opierdalanie się", value: 25 },
-    { name: "Prokrastynacja", value: 17 },
-    { name: "Clean code", value: 5 },
-    { name: "Zarządzanie czasem", value: 15 },
-    { name: "Bycie kreatywnym", value: 1 },
-]
+type Props = { skills: Skill[] }
 
 const UserSkills = (props: Props): JSX.Element => {
-    const maxValue = Math.max(...skills.map(s => s.value));
+    const maxValue = Math.max(...props.skills.map(s => s.points));
 
     return (
         <Paper
@@ -29,7 +21,7 @@ const UserSkills = (props: Props): JSX.Element => {
         >
             <Typography className="user-skills-header" variant="h5" >Skills</Typography>
 
-            {skills.sort((a, b) => b.value - a.value).map(s => <SkillMeter key={s.name} value={s.value} maxValue={maxValue} name={s.name} />)}
+            {props.skills.sort((a, b) => b.points - a.points).map(s => <SkillMeter key={s.id} value={s.points} maxValue={maxValue} name={s.name} />)}
         </Paper>
     );
 }

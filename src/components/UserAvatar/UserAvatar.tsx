@@ -6,7 +6,11 @@ import { Settings } from "../../settings";
 import Paper from "@mui/material/Paper";
 import { useParams } from "react-router-dom";
 
-type Props = {}
+type Props = {
+    username: string,
+    title: string,
+    photo_url_id: string
+}
 
 const UserAvatar = (props: Props): JSX.Element => {
     return (
@@ -16,13 +20,13 @@ const UserAvatar = (props: Props): JSX.Element => {
         >
             <Avatar
                 className="avatar"
-                src="https://www.autocentrum.pl/ac-file/car-version/5cd964ffc74b353ca106e2f2.jpg"
+                src={Settings.serverUrl + "file?id=" + props.photo_url_id}
                 sx={{ width: 192, height: 192 }}
                 style={{ objectFit: "cover" }}
             />
 
-            <Typography variant="h4" >Spookyless</Typography>
-            <Typography variant="h5">Slayer of Integrals</Typography>
+            <Typography variant="h4" >{props.username}</Typography>
+            <Typography variant="h5">{props.title}</Typography>
         </Paper>
     );
 }
