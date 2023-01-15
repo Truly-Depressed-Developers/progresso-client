@@ -19,6 +19,7 @@ import { QuizAdd } from './pages/QuizAdd';
 import { QuestionAdd } from './pages/QuestionAdd';
 import { TakeQuiz } from './pages/TakeQuiz';
 import { Quizes } from './pages/Quizes';
+import { Leaderboard } from './pages/Leaderboard';
 
 function Inside() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -47,6 +48,7 @@ function Inside() {
                         <Link to="/quiz/add">Add quiz</Link>
                         <Link to="/quiz/list">Quiz list</Link>
                         <Link to="/browser">Browse PDFs</Link>
+                        <Link to="/leaderboard">Leaderboard</Link>
                     </div>
                     {!loggedIn ?
                         <div id="right">
@@ -73,6 +75,7 @@ function Inside() {
                     <Route path='/quiz/:id/add' element={<QuestionAdd />} />
                     <Route path='/quiz/:id/take' element={<TakeQuiz />} />
                     <Route path='/file/:id' element={<File />} />
+                    <Route path='/leaderboard' element={<Leaderboard />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </MyGlobalContext.Provider>
