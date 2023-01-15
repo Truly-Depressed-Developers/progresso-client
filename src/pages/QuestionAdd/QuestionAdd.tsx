@@ -36,8 +36,18 @@ const QuestionAdd = (props: Props): JSX.Element => {
             return;
         }
 
-        // TODO Skończyć
-        fetch(Settings.serverUrl + "coś", { method: "POST" })
+        const data = new URLSearchParams();
+        data.append("quiz_id", id?.toString() || "0");
+        data.append("question", question);
+
+        answers.forEach((a, i) => {
+            if (i === 0) { return; }
+            data.append("answer", a);
+        })
+
+        data.append("correctAnswer", answers[0]);
+
+        fetch(Settings.serverUrl + "addWholeQuestion", { method: "POST", body: data });
     }, [validForm]);
 
     if (id === undefined) {
