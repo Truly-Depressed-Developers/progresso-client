@@ -8,8 +8,7 @@ import { useParams } from "react-router-dom";
 import { BrowserFileData } from "../../types/BrowserFileData"
 import { ButtonBase } from "@mui/material"
 
-type Props = BrowserFileData
-
+type Props = BrowserFileData;
 
 const BrowserFile = (props: Props): JSX.Element => {
     function openPDF() {
@@ -37,6 +36,8 @@ const BrowserFile = (props: Props): JSX.Element => {
             });
     }
 
+    const likes = Math.floor(Math.pow(Math.random() * 20, 2));
+
     return (
         <ButtonBase
             onClick={openPDF}
@@ -49,7 +50,7 @@ const BrowserFile = (props: Props): JSX.Element => {
                     <div id="top-details">
                         <div className="upvoteContainer">
                             <img className="extensionIcon" src={`http://${Settings.ip}:${Settings.port}/static/upvote.png`} />
-                            <Typography className="extension" variant="body1">123</Typography>
+                            <Typography className="extension" variant="body1">{likes}</Typography>
                         </div>
                         <img className="extensionIcon" src={`http://${Settings.ip}:${Settings.port}/static/${props.extension}.png`} />
                     </div>

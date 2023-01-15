@@ -11,13 +11,15 @@ const Home = (props: Props): JSX.Element => {
                 <Typography
                     variant="h1"
                 >
-                    &lt;BITEhack&gt;
+                    Progresso
                 </Typography>
+
+                <br />
 
                 <Typography
                     variant="h5"
                 >
-                    Edycja V, 2023
+                    &lt;BITEhack&gt; (Edycja V, 2023)
                 </Typography>
             </div>
         </div>
