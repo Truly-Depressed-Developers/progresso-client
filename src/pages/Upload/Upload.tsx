@@ -37,53 +37,48 @@ const Upload = (props: Props): JSX.Element => {
 
     }, []);
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, maxFiles: 1 });
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, maxFiles: 1, accept: { "application/pdf": [".pdf"] } });
 
     const shouldReact = !(isUploading || isFinishedUploading);
 
     return (
-        <FormControl id="upload-form">
-            <Typography variant="h3">
-                Upload
-            </Typography>
+        <Paper
+            id="upload-form"
+            elevation={2}
+            style={{ width: "75vw", height: "60vh", padding: 32 }}
+        >
 
-            <Paper
-                elevation={2}
-                style={{ width: "80vw", height: "50vh", padding: 32 }}
+            <div
+                className="files-drop"
+                {...getRootProps()}
+                style={{ transition: "background-color 0.25s", cursor: (shouldReact ? "pointer" : "default"), backgroundColor: ((shouldReact && isDragActive) ? "rgba(0,255,0,0.2)" : "rgba(0,0,0,0.04)") }}
             >
+                <input
+                    {...getInputProps()}
+                    disabled={shouldReact === false}
+                />
 
-                <div
-                    className="files-drop"
-                    {...getRootProps()}
-                    style={{ transition: "background-color 0.25s", cursor: (shouldReact ? "pointer" : "default"), backgroundColor: ((shouldReact && isDragActive) ? "rgba(0,255,0,0.2)" : "rgba(0,0,0,0.04)") }}
-                >
-                    <input
-                        {...getInputProps()}
-                        disabled={shouldReact === false}
-                    />
+                {isUploading === false && isFinishedUploading === false &&
+                    (isDragActive ?
+                        <span>Drop here!</span> :
+                        <span>Drag and drop file(s) here</span>
+                    )
+                }
 
-                    {isUploading === false && isFinishedUploading === false &&
-                        (isDragActive ?
-                            <span>Drop here!</span> :
-                            <span>Drag and drop file(s) here</span>
-                        )
-                    }
+                {isUploading === true && isFinishedUploading === false &&
+                    <>
+                        <CircularProgress />
+                        <span>Uploading...</span>
+                    </>
+                }
 
-                    {isUploading === true && isFinishedUploading === false &&
-                        <>
-                            <CircularProgress />
-                            <span>Uploading...</span>
-                        </>
-                    }
+                {isUploading === false && isFinishedUploading === true &&
+                    <span>File(s) uploaded!</span>
+                }
 
-                    {isUploading === false && isFinishedUploading === true &&
-                        <span>File(s) uploaded!</span>
-                    }
+            </div>
 
-                </div>
-
-            </Paper>
-        </FormControl>
+        </Paper>
     );
 }
 

@@ -18,6 +18,9 @@ const TakeQuiz = (props: Props): JSX.Element => {
     const [answers, setAnswers] = useState<number[]>([]);
     const [selectedQuestion, setSelectedQuestion] = useState(1);
 
+    const [result, setResult] = useState<null | boolean>(null);
+    const [msg, setMsg] = useState("");
+
     const validQuiz = useMemo(() => answers.length > 0 && answers.every(a => a !== -1), [answers]);
 
     useEffect(() => {
@@ -37,15 +40,24 @@ const TakeQuiz = (props: Props): JSX.Element => {
 
     const onSubmit = useCallback(() => {
         (async () => {
-            const data = new URLSearchParams();
-            data.append("id", userID);
-            data.append("quiz_id", id?.toString() || "0");
+            const dt = new URLSearchParams();
+            dt.append("id", userID);
+            dt.append("quiz_id", id?.toString() || "0");
 
             answers.forEach(a => {
-                data.append("ids", a.toString());
+                dt.append("ids", a.toString());
             });
 
-            const response = await fetch(Settings.serverUrl + "evaluateQuiz", { method: "POST", body: data });
+            const response = await fetch(Settings.serverUrl + "evaluateQuiz", { method: "POST", body: dt });
+            const data = await response.json();
+
+            if (data.correct === 1) {
+                setResult(true);
+                setMsg(data.description);
+            } else {
+                setResult(false);
+            }
+
         })();
     }, [validQuiz, answers]);
 
@@ -59,9 +71,20 @@ const TakeQuiz = (props: Props): JSX.Element => {
     const A = quizData.answers[Q.id];
     const ans = answers[selectedQuestion - 1];
 
+    if (result === true) {
+        return <Paper elevation={2} id="quiz-take">
+            {msg}
+        </Paper>
+    }
+
+    if (result === false) {
+        return <Paper elevation={2} id="quiz-take">
+            You've made a mistake, better luck next time!
+        </Paper>
+    }
+
     return (
         <Paper elevation={2} id="quiz-take">
-            {answers}
             <Typography className='spacer' variant='body1'>{Q.question}</Typography>
 
             <FormControl>
@@ -69,7 +92,7 @@ const TakeQuiz = (props: Props): JSX.Element => {
                     name="radio-buttons-group"
                     onChange={(e) => setAnswers([...answers.map((a, index) => index === (selectedQuestion - 1) ? parseInt(e.target.value) : a)])}
                 >
-                    {A.map(a => <FormControlLabel key={a.id} value={a.id} control={<Radio />} label={a.id} checked={a.id === ans} />)}
+                    {A.map(a => <FormControlLabel key={a.id} value={a.id} control={<Radio />} label={a.answer} checked={a.id === ans} />)}
                 </RadioGroup>
             </FormControl>
 
