@@ -10,6 +10,8 @@ import { UserBio } from "../../components/UserBio";
 import { UserSkills } from "../../components/UserSkills";
 import { UserAchievements } from "../../components/UserAchievements";
 
+
+
 type Props = {}
 
 const User = (props: Props): JSX.Element => {
