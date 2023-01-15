@@ -22,7 +22,7 @@ const PointsHistory = (props: Props): JSX.Element => {
                         <TableCell align="center">Points</TableCell>
                         <TableCell align="center">Activity type</TableCell>
                         <TableCell align="center">Activity name</TableCell>
-                        <TableCell align="center">Data</TableCell>
+                        <TableCell align="center">Date</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
