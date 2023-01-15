@@ -11,6 +11,8 @@ import { UserSkills } from "../../components/UserSkills";
 import { UserAchievements } from "../../components/UserAchievements";
 import { UserProfileResponse } from "../../types/UserProfileResponse";
 
+
+
 type Props = {}
 
 const User = (props: Props): JSX.Element => {

@@ -4,6 +4,8 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import { Routes } from 'react-router';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
+import { MyGlobalContext } from './Provider'
+
 import { Home } from './pages/Home/Home';
 import { NotFound } from './pages/NotFound/NotFound';
 import { Login } from './pages/Login';
@@ -33,37 +35,38 @@ function Inside() {
 
     return (
         <div className="App">
-            <nav>
-                <div id="left">
-                    <Link to="/">Home</Link>
-                    <Link to="/upload">Upload</Link>
-                    <Link to="/random">Random</Link>
-                    <Link to="/browser">Browse PDFs</Link>
-                </div>
-                {!loggedIn ?
-                    <div id="right">
-                        <Link to="/login">Login</Link>
-                        <Link className='colored' to="/register">Register</Link>
+            <MyGlobalContext.Provider value={{ loggedIn, setLoggedIn, userID, setUserID, username, setUsername }}>
+                <nav>
+                    <div id="left">
+                        <Link to="/">Home</Link>
+                        <Link to="/upload">Upload</Link>
+                        <Link to="/random">Random</Link>
+                        <Link to="/browser">Browse PDFs</Link>
                     </div>
-                    :
-                    <div id="right">
-                        <Link to="/user/1">{username}</Link>
-                        <Link className='colored' onClick={logOut} to="/">Logout</Link>
-                    </div>
-                }
-            </nav>
+                    {!loggedIn ?
+                        <div id="right">
+                            <Link to="/login">Login</Link>
+                            <Link className='colored' to="/register">Register</Link>
+                        </div>
+                        :
+                        <div id="right">
+                            <Link to={`/user/${username}`}>{username}</Link>
+                            <Link className='colored' onClick={logOut} to="/">Logout</Link>
+                        </div>
+                    }
+                </nav>
 
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path="/upload" element={<Upload />} />
-                <Route path="/user/:id" element={<User />} />
-                <Route path='/login' element={<Login onLogin={onLogin} />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/browser' element={<Browser />} />
-                <Route path='/file/:id' element={<File />} />
-                <Route path='*' element={<NotFound />} />
-            </Routes>
-
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path="/upload" element={<Upload />} />
+                    <Route path="/user/:id" element={<User />} />
+                    <Route path='/login' element={<Login onLogin={onLogin} />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/browser' element={<Browser />} />
+                    <Route path='/file/:id' element={<File />} />
+                    <Route path='*' element={<NotFound />} />
+                </Routes>
+            </MyGlobalContext.Provider>
         </div>
     )
 }
