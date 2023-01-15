@@ -20,6 +20,7 @@ const PointsHistory = (props: Props): JSX.Element => {
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">Points</TableCell>
+                        <TableCell align="center">Skill</TableCell>
                         <TableCell align="center">Activity type</TableCell>
                         <TableCell align="center">Activity name</TableCell>
                         <TableCell align="center">Date</TableCell>
@@ -31,6 +32,7 @@ const PointsHistory = (props: Props): JSX.Element => {
                             key={el.id}
                             id={el.id}
                             points={el.points}
+                            skill={el.skill}
                             activity_type={el.activity_type}
                             activity_name={el.activity_name}
                             timestamp={el.timestamp}
