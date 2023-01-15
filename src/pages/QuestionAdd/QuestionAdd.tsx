@@ -14,6 +14,8 @@ const QuestionAdd = (props: Props): JSX.Element => {
     const [asnwerCount, setAnswerCount] = useState(3);
     const [answers, setAnswers] = useState<string[]>(["", "", ""]);
 
+    const [messaage, setMessage] = useState("");
+
     const validQuestion = useMemo(() => question.length >= 3, [question]);
     const validAnswerCount = useMemo(() => asnwerCount >= 3, [asnwerCount]);
     const validAnswers = useMemo(() => answers.map(a => a.length > 0), [answers]);
@@ -32,21 +34,26 @@ const QuestionAdd = (props: Props): JSX.Element => {
     }, [asnwerCount]);
 
     const onSubmit = useCallback(() => {
-        if (validForm === false) {
-            return;
-        }
+        (async () => {
+            if (validForm === false) {
+                return;
+            }
 
-        const data = new URLSearchParams();
-        data.append("quiz_id", id?.toString() || "0");
-        data.append("question", question);
+            const data = new URLSearchParams();
+            data.append("quiz_id", id?.toString() || "0");
+            data.append("question", question);
 
-        answers.forEach((a, i) => {
-            data.append("answers", a);
-        })
+            answers.forEach((a, i) => {
+                data.append("answers", a);
+            })
 
-        data.append("correctAnswer", answers[0]);
+            data.append("correctAnswer", answers[0]);
 
-        fetch(Settings.serverUrl + "addWholeQuestion", { method: "POST", body: data });
+            const response = await fetch(Settings.serverUrl + "addWholeQuestion", { method: "POST", body: data });
+            const d = await response.json();
+
+            setMessage(d.description);
+        })()
     }, [validForm]);
 
     if (id === undefined) {
@@ -55,6 +62,12 @@ const QuestionAdd = (props: Props): JSX.Element => {
                 Quiz does not exist
             </Paper>
         )
+    }
+
+    if (messaage.length !== 0) {
+        return <Paper elevation={2} id="question-add">
+            {messaage}
+        </Paper>
     }
 
     return (
