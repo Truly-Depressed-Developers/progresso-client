@@ -24,7 +24,15 @@ const UserAchievements = (props: Props): JSX.Element => {
             <Typography className="user-achievements-header" variant="h5" >Achievements</Typography>
 
             <div className="achievements-container">
-                {props.achievements.map(a => <Achievement key={a.id} iconUrl={Settings.serverUrl + "static/" + a.photo_url} />)}
+                {
+                    props.achievements.map(a =>
+                        <Achievement
+                            key={a.id}
+                            iconUrl={Settings.serverUrl + "static/" + a.photo_url}
+                            name={a.name}
+                            description={a.description}
+                        />)
+                }
             </div>
 
         </Paper>
