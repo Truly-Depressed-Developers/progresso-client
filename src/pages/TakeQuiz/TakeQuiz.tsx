@@ -1,9 +1,8 @@
-import { Alert, Button, Divider, FormControl, FormControlLabel, FormLabel, Pagination, Paper, Radio, RadioGroup, TextField, Typography } from '@mui/material';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Button, FormControl, FormControlLabel, Pagination, Paper, Radio, RadioGroup, Typography } from '@mui/material';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { useGlobalContext } from '../../Provider';
 import { Settings } from '../../settings';
-import { Question } from '../../types/Question';
 import { TakeQuizResponse } from '../../types/TakeQuizResponse';
 
 import "./TakeQuiz.scss";
