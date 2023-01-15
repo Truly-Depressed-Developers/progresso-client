@@ -50,12 +50,12 @@ function Inside() {
                         </div>
                         :
                         <div id="right">
-                            <Link to="/user/1">{username}</Link>
+                            <Link to={`/user/${username}`}>{username}</Link>
                             <Link className='colored' onClick={logOut} to="/">Logout</Link>
                         </div>
                     }
                 </nav>
-                
+
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path="/upload" element={<Upload />} />
