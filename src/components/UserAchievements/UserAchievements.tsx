@@ -29,6 +29,7 @@ const UserAchievements = (props: Props): JSX.Element => {
                         <Achievement
                             key={a.id}
                             iconUrl={Settings.serverUrl + "static/" + a.photo_url}
+                            name={a.name}
                             description={a.description}
                         />)
                 }
