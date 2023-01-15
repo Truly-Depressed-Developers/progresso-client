@@ -10,6 +10,7 @@ import { UserBio } from "../../components/UserBio";
 import { UserSkills } from "../../components/UserSkills";
 import { UserAchievements } from "../../components/UserAchievements";
 import { UserProfileResponse } from "../../types/UserProfileResponse";
+import { PointsHistory } from "../../components/PointsHistory";
 
 
 
@@ -44,23 +45,30 @@ const User = (props: Props): JSX.Element => {
             {profileData === null ?
                 <Typography variant="body1">User not found</Typography> :
                 <div id="profile-container">
-                    <div>
-                        <UserAvatar
-                            username={profileData.single[0].username}
-                            title={profileData.single[0].title}
-                            photo_url_id={profileData.single[0].profile_photo_id}
-                        />
-                        <UserBio
-                            bio={profileData.single[0].bio}
-                        />
-                    </div>
+                    <div id="top-panels">
+                        <div>
+                            <UserAvatar
+                                username={profileData.single[0].username}
+                                title={profileData.single[0].title}
+                                photo_url_id={profileData.single[0].profile_photo_id}
+                            />
+                            <UserBio
+                                bio={profileData.single[0].bio}
+                            />
+                        </div>
 
-                    <div>
-                        <UserSkills
-                            skills={profileData.skills}
-                        />
-                        <UserAchievements
-                            achievements={profileData.achievements}
+                        <div>
+                            <UserSkills
+                                skills={profileData.skills}
+                            />
+                            <UserAchievements
+                                achievements={profileData.achievements}
+                            />
+                        </div>
+                    </div>
+                    <div id="points-history">
+                        <PointsHistory
+                            history={profileData.points_history}
                         />
                     </div>
                 </div>

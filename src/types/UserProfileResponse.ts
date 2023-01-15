@@ -1,4 +1,5 @@
 import { Achievement } from "./Achievement"
+import { PointsHistoryData } from "./PointsHistoryData"
 import { Skill } from "./Skill"
 
 export type UserProfileResponse = {
@@ -10,4 +11,5 @@ export type UserProfileResponse = {
     }[],
     skills: Skill[],
     achievements: Achievement[]
+    points_history: PointsHistoryData[]
 }

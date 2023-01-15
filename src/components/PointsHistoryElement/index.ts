@@ -1,0 +1,1 @@
+export { PointsHistoryElement } from "./PointsHistoryElement";
