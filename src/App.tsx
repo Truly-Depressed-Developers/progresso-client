@@ -15,6 +15,8 @@ import { User } from './pages/User';
 import { Browser } from './pages/Browser';
 import { File } from './pages/File';
 import { useState } from 'react';
+import { QuizAdd } from './pages/QuizAdd';
+import { QuestionAdd } from './pages/QuestionAdd';
 import { TakeQuiz } from './pages/TakeQuiz';
 import { Quizes } from './pages/Quizes';
 
@@ -57,7 +59,7 @@ function Inside() {
                         </div>
                     }
                 </nav>
-
+                
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path="/upload" element={<Upload />} />
