@@ -35,7 +35,7 @@ const TakeQuiz = (props: Props): JSX.Element => {
     }, []);
 
     useEffect(() => {
-        setAnswers([...Array(quizData?.questions.length).fill(-1)]);
+        setAnswers([...Array(quizData?.questions?.length).fill(-1)]);
     }, [quizData]);
 
     const onSubmit = useCallback(() => {
@@ -65,6 +65,14 @@ const TakeQuiz = (props: Props): JSX.Element => {
         return <Paper elevation={2} id="quiz-take">
             Quiz does not exist.
         </Paper>
+    }
+
+    if (!quizData.questions) {
+        return (
+            <Paper elevation={2} id="quiz-take">
+                <Typography className='spacer' variant='body1'>Ten quiz nie ma pytań</Typography>
+            </Paper>
+        );
     }
 
     const Q = quizData.questions[selectedQuestion - 1];
