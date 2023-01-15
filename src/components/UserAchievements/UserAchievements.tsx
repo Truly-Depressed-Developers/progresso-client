@@ -9,8 +9,11 @@ import { BorderLinearProgress } from "../BorderLinearProgress/BorderLinearProgre
 import { SkillMeter } from "../SkillMeter";
 import { Skill } from "../../types/Skill";
 import { Achievement } from "../Achievement";
+import { Achievement as AchievementData } from "../../types/Achievement";
 
-type Props = {}
+type Props = {
+    achievements: AchievementData[]
+}
 
 const UserAchievements = (props: Props): JSX.Element => {
     return (
@@ -21,30 +24,14 @@ const UserAchievements = (props: Props): JSX.Element => {
             <Typography className="user-achievements-header" variant="h5" >Achievements</Typography>
 
             <div className="achievements-container">
-                <Achievement
-                    iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2048px-000080_Navy_Blue_Square.svg.png"
-                />
-                <Achievement
-                    iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2048px-000080_Navy_Blue_Square.svg.png"
-                />
-                <Achievement
-                    iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2048px-000080_Navy_Blue_Square.svg.png"
-                />
-                <Achievement
-                    iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2048px-000080_Navy_Blue_Square.svg.png"
-                />
-                <Achievement
-                    iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2048px-000080_Navy_Blue_Square.svg.png"
-                />
-                <Achievement
-                    iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2048px-000080_Navy_Blue_Square.svg.png"
-                />
-                <Achievement
-                    iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2048px-000080_Navy_Blue_Square.svg.png"
-                />
-                <Achievement
-                    iconUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2048px-000080_Navy_Blue_Square.svg.png"
-                />
+                {
+                    props.achievements.map(a =>
+                        <Achievement
+                            key={a.id}
+                            iconUrl={Settings.serverUrl + "static/" + a.photo_url}
+                            description={a.description}
+                        />)
+                }
             </div>
 
         </Paper>
