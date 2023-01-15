@@ -28,8 +28,6 @@ const User = (props: Props): JSX.Element => {
             const result = await fetch(Settings.serverUrl + "getUserData?username=" + id, { method: "GET" });
             const data = (await result.json()).data as UserProfileResponse;
 
-            console.log(data);
-
             if (data === undefined) {
                 return;
             }

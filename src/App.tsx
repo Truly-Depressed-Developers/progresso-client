@@ -15,6 +15,7 @@ import { User } from './pages/User';
 import { Browser } from './pages/Browser';
 import { File } from './pages/File';
 import { useState } from 'react';
+import { TakeQuiz } from './pages/TakeQuiz';
 
 function Inside() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -40,7 +41,7 @@ function Inside() {
                     <div id="left">
                         <Link to="/">Home</Link>
                         <Link to="/upload">Upload</Link>
-                        <Link to="/random">Random</Link>
+                        <Link to="/quiz/5/take">Take quiz</Link>
                         <Link to="/browser">Browse PDFs</Link>
                     </div>
                     {!loggedIn ?
@@ -63,6 +64,7 @@ function Inside() {
                     <Route path='/login' element={<Login onLogin={onLogin} />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/browser' element={<Browser />} />
+                    <Route path='/quiz/:id/take' element={<TakeQuiz />} />
                     <Route path='/file/:id' element={<File />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
