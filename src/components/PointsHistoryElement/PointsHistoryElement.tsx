@@ -10,12 +10,12 @@ const PointsHistoryElement = (props: Props): JSX.Element => {
             key={props.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
-            <TableCell component="th" scope="row">
+            <TableCell component="th" scope="row" align="center">
                 {props.points}
             </TableCell>
-            <TableCell align="right">{props.activity_type}</TableCell>
-            <TableCell align="right">{props.activity_name}</TableCell>
-            <TableCell align="right">{props.timestamp}</TableCell>
+            <TableCell align="center">{props.activity_type}</TableCell>
+            <TableCell align="center">{props.activity_name}</TableCell>
+            <TableCell align="center">{new Date(props.timestamp).toLocaleString()}</TableCell>
         </TableRow>
     );
 }

@@ -19,10 +19,10 @@ const PointsHistory = (props: Props): JSX.Element => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Points</TableCell>
-                        <TableCell align="right">Activity type</TableCell>
-                        <TableCell align="right">Activity name</TableCell>
-                        <TableCell align="right">Timestamp</TableCell>
+                        <TableCell align="center">Points</TableCell>
+                        <TableCell align="center">Activity type</TableCell>
+                        <TableCell align="center">Activity name</TableCell>
+                        <TableCell align="center">Data</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
