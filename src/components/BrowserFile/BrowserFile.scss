@@ -1,8 +1,42 @@
 #browser-file {
     width: 100%;
+    height: 100%;
+    display: flex;
     padding: 8px;
 
-    #browser-file-details {
+    #inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &>* {
+            padding: 20px 10px;
+        }
+    }
+
+    .extensionIcon {
+        max-width: 48px;
+    }
+
+    .upvoteContainer {
+        p {
+            font-size: 26px;
+            margin-top: 10px;
+        }
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    #top-details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #bottom-details {
         display: flex;
         justify-content: space-between;
     }

@@ -45,10 +45,18 @@ const BrowserFile = (props: Props): JSX.Element => {
                 id="browser-file"
                 elevation={2}
             >
-                <Typography className="name" variant="h5" >{props.originalName}</Typography>
-                <div id="browser-file-details">
-                    <Typography className="extension" variant="body1">{props.extension}</Typography>
-                    <Typography className="uploadTimestamp" variant="body1">{props.uploadTimestamp}</Typography>
+                <div id="inner">
+                    <div id="top-details">
+                        <div className="upvoteContainer">
+                            <img className="extensionIcon" src={`http://${Settings.ip}:${Settings.port}/static/upvote.png`} />
+                            <Typography className="extension" variant="body1">123</Typography>
+                        </div>
+                        <img className="extensionIcon" src={`http://${Settings.ip}:${Settings.port}/static/${props.extension}.png`} />
+                    </div>
+                    <Typography className="name" variant="h5" >{props.originalName}</Typography>
+                    <div id="bottom-details">
+                        <Typography className="uploadTimestamp" variant="body1">{new Date(props.uploadTimestamp).toLocaleString()}</Typography>
+                    </div>
                 </div>
             </Paper>
         </ButtonBase>

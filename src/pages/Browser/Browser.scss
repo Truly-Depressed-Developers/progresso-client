@@ -1,12 +1,18 @@
 #browser {
     display: flex;
-    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
 
     #browser-container {
-        max-width: 666px;
-        gap: 16px;
+        margin-top: 16px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 
-        display: flex;
-        flex-direction: column;
+        &>* {
+            margin: 16px;
+            // width: 22%;
+        }
     }
 }
