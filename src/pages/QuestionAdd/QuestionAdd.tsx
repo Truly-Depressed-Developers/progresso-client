@@ -41,8 +41,7 @@ const QuestionAdd = (props: Props): JSX.Element => {
         data.append("question", question);
 
         answers.forEach((a, i) => {
-            if (i === 0) { return; }
-            data.append("answer", a);
+            data.append("answers", a);
         })
 
         data.append("correctAnswer", answers[0]);
