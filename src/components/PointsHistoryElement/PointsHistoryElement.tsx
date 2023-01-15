@@ -13,6 +13,7 @@ const PointsHistoryElement = (props: Props): JSX.Element => {
             <TableCell component="th" scope="row" align="center">
                 {props.points}
             </TableCell>
+            <TableCell align="center">{props.skill}</TableCell>
             <TableCell align="center">{props.activity_type}</TableCell>
             <TableCell align="center">{props.activity_name}</TableCell>
             <TableCell align="center">{new Date(props.timestamp).toLocaleString()}</TableCell>
