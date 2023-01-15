@@ -1,0 +1,1 @@
+export { QuizTile } from "./QuizTile";
